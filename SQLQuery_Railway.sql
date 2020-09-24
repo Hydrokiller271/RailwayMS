@@ -22,8 +22,8 @@ CREATE TABLE System.Schedule(
 	train VARCHAR (20) PRIMARY KEY ,
 	sequence_number VARCHAR (20) ,
 	station VARCHAR (20) ,
-	time_in DATE ,
-	time_out DATE);
+	time_in TIME ,
+	time_out TIME);
 
 CREATE TABLE System.Booking(
 	id VARCHAR (20) PRIMARY KEY,
