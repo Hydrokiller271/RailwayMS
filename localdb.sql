@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2020 at 04:17 PM
+-- Generation Time: Nov 30, 2020 at 04:41 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -29,7 +30,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `booking`;
 CREATE TABLE `booking` (
-  `id` varchar(20) NOT NULL,
+  `id` int(20) NOT NULL,
   `date` date DEFAULT NULL,
   `r_from` varchar(20) DEFAULT NULL,
   `r_to` varchar(20) DEFAULT NULL,
@@ -38,7 +39,8 @@ CREATE TABLE `booking` (
   `train` varchar(20) DEFAULT NULL,
   `start_sn` varchar(20) DEFAULT NULL,
   `end_sn` varchar(20) DEFAULT NULL,
-  `passenger_name` varchar(20) DEFAULT NULL
+  `passenger_name` varchar(20) DEFAULT NULL,
+  `passenger_tel` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -313,6 +315,12 @@ ALTER TABLE `train`
 --
 
 --
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `track`
 --
 ALTER TABLE `track`
@@ -335,6 +343,7 @@ ALTER TABLE `schedule`
 ALTER TABLE `track`
   ADD CONSTRAINT `track_ibfk_1` FOREIGN KEY (`station_a`) REFERENCES `station` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `track_ibfk_2` FOREIGN KEY (`station_b`) REFERENCES `station` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
